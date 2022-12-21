@@ -1,9 +1,9 @@
-# Template React JS - Electron
+# Marvel Desktop
 
 ## About the project
 
 ### Description
-Template for ReactJS project with Electron.
+A ReactJS based desktop app to view marvel comics, characters, creators and other related info.
 
 ### Built with
 * [React.js](https://reactjs.org/)
@@ -16,6 +16,9 @@ Template for ReactJS project with Electron.
 ### Code check and styling
 [ES Lint](https://eslint.org/)
 
+### API
+[Marvel Developer Portal](https://developer.marvel.com/)
+
 ### Bundle and packaging
 [Electron Forge](https://www.electronforge.io/)
 [Webpack](https://webpack.js.org/)
@@ -23,8 +26,8 @@ Template for ReactJS project with Electron.
 ## Installation
 Use the below commands to launch the app
 ```
-git clone https://github.com/zafaralam2608/template-reactjs-electron.git
-cd template-reactjs-electron
+git clone https://github.com/zafaralam2608/marvel-desktop.git
+cd marvel-desktop
 npm install
 npm start
 ```

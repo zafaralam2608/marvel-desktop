@@ -1,8 +1,13 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Box, Container, Toolbar } from '@mui/material';
-import Dashboard from './Dashboard';
-import Welcome from './Welcome';
+import Album from '../common/Album';
+import Profile from '../common/Profile';
+import Error from '../common/Error';
+import navList from '../constant/nav';
+import contentList from '../constant/content';
+import profileList from '../constant/profile';
+import errorList from '../constant/error';
 
 function Content() {
   return (
@@ -13,8 +18,56 @@ function Content() {
       <Toolbar />
       <Container maxWidth="100%" sx={{ mt: 5, mb: 5 }}>
         <Routes>
-          <Route index element={<Dashboard />} />
-          <Route path="welcome" element={<Welcome />} />
+          <Route index element={<Navigate to={navList[0].link} replace />} />
+          {
+            contentList.map(
+              (item) => (
+                <Route
+                  key={item.link}
+                  path={item.link}
+                  element={item.element}
+                />
+              ),
+            )
+          }
+          {
+            profileList.map(
+              (item) => (
+                <Route
+                  key={`${item.link}-id`}
+                  path={`${item.link}/:id`}
+                  element={<Profile comp={item} />}
+                />
+              ),
+            )
+          }
+          {
+            profileList.map(
+              (der) => (
+                der.child.map(
+                  (item) => (
+                    <Route
+                      key={`${der.link}-id-${item.link}`}
+                      path={`${der.link}/:id/${item.link}`}
+                      element={<Album comp={item} parent={der.link} />}
+                    />
+                  ),
+                )
+              ),
+            )
+          }
+          {
+            errorList.map(
+              (item) => (
+                <Route
+                  key={item.link}
+                  path={item.link}
+                  element={<Error comp={item} />}
+                />
+              ),
+            )
+          }
+          <Route path="*" element={<Navigate to={errorList[0].link} replace />} />
         </Routes>
       </Container>
     </Box>

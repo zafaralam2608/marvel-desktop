@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import {
-  Divider, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, Toolbar,
+  Divider, IconButton, Link, List, ListItem, ListItemIcon, ListItemText,
 } from '@mui/material';
-import {
-  ChevronLeft, Home, Menu, People,
-} from '@mui/icons-material';
+import Toolbar from '@mui/material/Toolbar';
+import { ChevronLeft, Menu } from '@mui/icons-material';
 import Drawer from '../common/Drawer';
+import navList from '../constant/nav';
 
 function Sidebar() {
   const [open, setOpen] = useState(false);
@@ -28,22 +28,20 @@ function Sidebar() {
       </Toolbar>
       <Divider />
       <List component="nav">
-        <Link href="#/" style={{ textDecoration: 'none' }}>
-          <ListItem button>
-            <ListItemIcon>
-              <Home />
-            </ListItemIcon>
-            <ListItemText primary="Dashboard" />
-          </ListItem>
-        </Link>
-        <Link href="#/welcome" style={{ textDecoration: 'none' }}>
-          <ListItem button>
-            <ListItemIcon>
-              <People />
-            </ListItemIcon>
-            <ListItemText primary="Welcome" />
-          </ListItem>
-        </Link>
+        {
+          navList.map(
+            (nav) => (
+              <Link key={nav.label} href={`#/${nav.link}`} style={{ textDecoration: 'none' }}>
+                <ListItem button>
+                  <ListItemIcon>
+                    {nav.icon}
+                  </ListItemIcon>
+                  <ListItemText primary={nav.label} />
+                </ListItem>
+              </Link>
+            ),
+          )
+        }
       </List>
     </Drawer>
   );

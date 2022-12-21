@@ -15,6 +15,7 @@ function Toggle() {
     <Box>
       <FormControlLabel
         control={<Switch checked={darkMode} onChange={colorMode.toggleColorMode} />}
+        label={`${darkMode ? 'Dark' : 'Light'} mode`}
       />
       <IconButton
         sx={{ borderRadius: 0 }}

@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material';
-import { ColorModeContext } from '../constant/context';
 import Layout from './Layout';
+import { ColorModeContext } from '../constant/context';
 
-function App() {
+function Application() {
   const [darkMode, setDarkMode] = useState(true);
 
   const colorMode = useMemo(
@@ -33,4 +33,4 @@ function App() {
   );
 }
 
-export default App;
+export default Application;
