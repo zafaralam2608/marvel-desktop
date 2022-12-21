@@ -29,6 +29,17 @@ module.exports = [
       extensions: ['.js', '.jsx'],
     },
   },
+  {
+    test: /\.(jpe?g|png|gif|svg)$/i,
+    use: {
+      loader: 'file-loader',
+      options: {
+        hash: 'sha512',
+        digest: 'hex',
+        name: '[hash].[ext]',
+      },
+    },
+  },
   // Put your webpack loader rules in this array.  This is where you would put
   // your ts-loader configuration for instance:
   /**
